@@ -1,0 +1,39 @@
+# =============================================================================
+# IssueFlow Root / Frontend - Docker Ignore File
+# Prevents node_modules, build artifacts, secrets, and backend files from entering frontend build
+# =============================================================================
+
+# Node dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment variables & secrets (NEVER copy into Docker image)
+.env
+.env.*
+backend/.env
+backend/.env.*
+
+# Backend source and venv (frontend image does not need backend)
+backend/
+issueflow.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Test caches & logs
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Git and IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+

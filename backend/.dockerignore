@@ -1,0 +1,41 @@
+# =============================================================================
+# IssueFlow Backend - Docker Ignore File
+# Prevents secrets, virtual environments, caches, and test artifacts from entering image
+# =============================================================================
+
+# Environment variables & secrets (NEVER copy into Docker image)
+.env
+.env.*
+*.env
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python byte-code and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# SQLite databases (Supabase PostgreSQL is primary)
+*.db
+*.sqlite
+*.sqlite3
+
+# Git and IDE files
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.log
+

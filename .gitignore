@@ -1,0 +1,93 @@
+# =============================================================================
+# IssueFlow - Root .gitignore
+# Comprehensive exclusion of secrets, environments, dependencies, caches & databases
+# =============================================================================
+
+# Environment Files & Secrets (NEVER commit to version control)
+.env
+.env.*
+!.env.example
+!docker-compose.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.pem
+*.key
+*.cert
+*.pfx
+
+# Node / Frontend Build & Dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Python & Virtual Environments
+.venv/
+backend/.venv/
+venv/
+env/
+ENV/
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python Caches & Bytecode
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing, Coverage & Profiling
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.vitest/
+
+# Local SQLite / Temporary Databases (Supabase PostgreSQL is primary)
+*.db
+*.sqlite
+*.sqlite3
+issueflow.db
+backend/issueflow.db
+test.db
+backend/test.db
+
+# Logs & Runtime Dumps
+logs/
+*.log
+*.pid
+*.seed
+
+# Operating System & IDE Artifacts
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
