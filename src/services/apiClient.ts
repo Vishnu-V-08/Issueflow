@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
 // Guarantee clean /api endpoint prefix
 export const API_BASE_URL = rawBaseUrl.endsWith('/api') ? rawBaseUrl : `${rawBaseUrl}/api`;
 
@@ -47,6 +47,9 @@ export const getApiErrorMessage = (error: unknown, fallback = 'An unexpected err
     const detail = error.response?.data?.detail;
     if (typeof detail === 'string') return detail;
     if (Array.isArray(detail) && detail[0]?.msg) return detail[0].msg;
+    if (error.message === 'Network Error' || error.code === 'ERR_NETWORK') {
+      return `Network Error: Cannot reach the backend API at ${API_BASE_URL}. Please ensure the FastAPI backend is running on port 8000.`;
+    }
     if (error.message) return error.message;
   }
   if (error instanceof Error) return error.message;

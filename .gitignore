@@ -80,6 +80,7 @@ logs/
 *.seed
 
 # Operating System & IDE Artifacts
+*.zip
 .DS_Store
 Thumbs.db
 .vscode/*

@@ -126,6 +126,18 @@ app.add_middleware(
 
 
 # -----------------------------------------------------------------------------
+# Request Diagnostic Logging Middleware
+# -----------------------------------------------------------------------------
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    origin = request.headers.get("origin") or "direct"
+    logger.info(f"Incoming {request.method} {request.url.path} from Origin: {origin}")
+    response = await call_next(request)
+    logger.info(f"Completed {request.method} {request.url.path} with status {response.status_code}")
+    return response
+
+
+# -----------------------------------------------------------------------------
 # Error Handlers
 # -----------------------------------------------------------------------------
 @app.exception_handler(RequestValidationError)
